@@ -9,8 +9,9 @@
 #   end
 
 
-WikiPost.create!(title: 'My first post')
-WikiPost.create!(title: 'My second post')
-WikiPost.create!(title: 'My third post')
-WikiPost.create!(title: 'My fourth post')
+WikiPost.create!(title: 'My first post', description: 'Description for the first post', author: 'Author A')
+WikiPost.create!(title: 'My second post', description: 'Description for the second post', author: 'Author B')
+WikiPost.create!(title: 'My third post', description: 'Description for the third post', author: 'Author C')
+WikiPost.create!(title: 'My fourth post', description: 'Description for the fourth post', author: 'Author D')
+
 

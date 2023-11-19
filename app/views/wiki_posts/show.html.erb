@@ -2,8 +2,10 @@
 
 <%= render @wiki_post %>
 
-<%=  @wiki_post.title %>
-<p>Created on <%= @wiki_post.created_at.strftime('%B %d %Y') %> </p>
+<h1><%=  @wiki_post.title.titleize %></h1>
+<p><%=  @wiki_post.description %></p>
+<p>Author: <%=  @wiki_post.author.titleize %></p>
+<p>Created on: <%=  @wiki_post.created_at.strftime('%B %d, %Y') %></p>
 
 
 <div>

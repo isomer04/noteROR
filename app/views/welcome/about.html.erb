@@ -1,1 +1,7 @@
-<h2> This is a about page </h2>
+<h1>NoteOR</h1>
+<h2>Site contributors: </h2>
+<ul>
+    <% @wiki_posts.contributors.compact.each do |contributor| %>
+    <li><%= contributor.titleize %></li>
+    <% end %>
+</ul>
