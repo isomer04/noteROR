@@ -1,0 +1,19 @@
+<h1>Deleted Posts</h1>
+
+<% if @deleted_wiki_posts.any? %>
+  <ul>
+    <% @deleted_wiki_posts.each do |deleted_wiki_post| %>
+      <li>
+        <%= "#{deleted_wiki_post.title} (deleted on #{deleted_wiki_post.deleted_at.strftime('%B %d, %Y')})" %>
+        <%= link_to 'Restore', restore_wiki_post_path(deleted_wiki_post), method: :patch, data: { confirm: 'Are you sure you want to restore this post?' } %>
+
+        <%= link_to 'Restore', restore_wiki_post_path(deleted_wiki_post), method: :patch, data: { confirm: 'Are you sure you want to restore this post?' } %>
+
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No deleted posts found.</p>
+<% end %>
+
+<%= link_to 'Back to Posts', wiki_posts_path %>

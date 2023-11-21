@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
-  resources :wiki_posts
+  resources :wiki_posts do
+    collection do
+      get 'deleted', to: 'wiki_posts#deleted', as: 'deleted'
+    end
+    member do
+      patch 'restore'
+      patch 'soft_delete'
+    end
+  end  
+  
   namespace :wiki_posts do
     get 'example'
 
@@ -21,4 +30,5 @@ Rails.application.routes.draw do
   get 'welcome/about'
   get '/about', to: redirect('/welcome/about')
   root "welcome#index"
+
 end

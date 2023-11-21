@@ -1,5 +1,5 @@
 class WikiPostsController < ApplicationController
-  before_action :set_wiki_post, only: %i[show edit update destroy ]
+  before_action :set_wiki_post, only: %i[show edit update destroy soft_delete restore]
 
   # GET /wiki_posts or /wiki_posts.json
   def index
@@ -60,14 +60,40 @@ class WikiPostsController < ApplicationController
     end
   end
 
+   # Soft delete action
+   def soft_delete
+    @wiki_post.soft_delete
+    redirect_to wiki_posts_url, notice: 'Wiki post was moved to the trash.'
+  end
+
+  def deleted
+    puts 'Debug: Deleted action is called!'
+
+    @deleted_wiki_posts = WikiPost.unscoped.where.not(deleted_at: nil)
+    puts "Debug: Found #{@deleted_wiki_posts.count} deleted posts."
+
+  end
+
+  def restore
+    @wiki_post = WikiPost.find(params[:id])
+    @wiki_post.restore
+    redirect_to deleted_wiki_posts_path, notice: 'Post restored successfully.'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_wiki_post
-      @wiki_post = WikiPost.find(params[:id])
+      if params[:id] == 'deleted'
+        redirect_to deleted_wiki_posts_path, alert: 'Invalid operation on deleted posts.'
+      else
+        @wiki_post = WikiPost.find(params[:id])
+      end
     end
 
     # Only allow a list of trusted parameters through.
     def wiki_post_params
       params.fetch(:wiki_post,  {}).permit(:title, :description, :author, :image)
     end
+
+   
 end
