@@ -1,4 +1,4 @@
-<h1>New wiki post</h1>
+<h1>New note</h1>
 
 <%= form_with model: @wiki_post, local: true do |form| %>
 
@@ -9,6 +9,8 @@
     <%= form.text_field :description %>
     <%= form.label :author %>
     <%= form.text_field :author %>
+    <%= form.label :image %>
+    <%= form.file_field :image %>
   </div>
   <div>
     <%= form.submit "Create" %>
@@ -19,5 +21,5 @@
 <br>
 
 <div>
-  <%= link_to "Back to wiki posts", wiki_posts_path %>
+  <%= link_to "Back to notes", wiki_posts_path %>
 </div>

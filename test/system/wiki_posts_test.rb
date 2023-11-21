@@ -12,7 +12,7 @@ class WikiPostsTest < ApplicationSystemTestCase
 
   test "should create wiki post" do
     visit wiki_posts_url
-    click_on "New wiki post"
+    click_on "New note"
 
     click_on "Create Wiki post"
 
