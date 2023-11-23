@@ -1,4 +1,3 @@
-<!-- app/views/wiki_posts/show.html.erb -->
 <p style="color: green"><%= notice %></p>
 
 <%= render @wiki_post %>
@@ -13,17 +12,11 @@
 <p>Author: <%= @wiki_post.author.present? ? @wiki_post.author.titleize : 'Unknown' %></p>
 
 <div>
-  <%= link_to "Edit this wiki post", edit_wiki_post_path(@wiki_post) %> |
+  <%= button_to "Permanently delete it", @wiki_post, method: :delete, form: { data: { turbo_confirm: "Are you sure you want to permanently delete #{@wiki_post.title}?" } } %>
+
+  <%= button_to "Move to Trash", soft_delete_wiki_post_path(@wiki_post), method: :patch, form: { data: { turbo_confirm: "Are you sure you want to move #{@wiki_post.title} to the trash?" } } %>
+
+  <%= link_to "Edit this note", edit_wiki_post_path(@wiki_post) %> |
   <%= link_to "Back to notes", wiki_posts_path %>
-
-  <%= button_to "Delete", @wiki_post, method: :delete, form: { data: { turbo_confirm: "Are you sure you want to delete #{@wiki_post.title}?" } } %>
-
-  <%= button_to "Move to Trash", soft_delete_wiki_post_path(@wiki_post), method: :patch, form: { data: { turbo_confirm: "Are you sure you want to move #{@wiki_post.title} to the trash?" } } %>
-
-  <%= button_to "Move to Trash", soft_delete_wiki_post_path(@wiki_post), method: :patch, form: { data: { turbo_confirm: "Are you sure you want to move #{@wiki_post.title} to the trash?" } } %>
-
-
-  <%= button_to 'Move to Trash', soft_delete_wiki_post_path(@wiki_post), method: :patch, form: { data: { turbo_confirm: "Are you sure you want to move this post to the trash?" } } %>
-
-
 </div>
+
