@@ -29,10 +29,10 @@
   </tbody>
 </table>
 
-<h2>Site contributors: </h2>
+<h2>Site contributors:</h2>
 <ul>
   <% @wiki_posts.contributors.compact.each do |contributor| %>
-    <li><%= contributor.titleize %></li>
+    <li><%= link_to contributor.titleize, contributor_posts_path(contributor) %></li>
   <% end %>
 </ul>
 

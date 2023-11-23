@@ -30,6 +30,8 @@ Rails.application.routes.draw do
   get 'welcome/about'
   get '/about', to: redirect('/welcome/about')
   get 'wiki_posts/:id/restore', to: 'wiki_posts#restore', as: :restore_wiki_post_get
+  get 'contributors/:contributor', to: 'wiki_posts#contributor_posts', as: 'contributor_posts'
+
 
   root "welcome#index"
 

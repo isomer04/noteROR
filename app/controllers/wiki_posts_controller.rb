@@ -83,9 +83,16 @@ class WikiPostsController < ApplicationController
       redirect_to deleted_wiki_posts_path, alert: 'Invalid operation on deleted posts.'
     end
   end
+
+  def contributor_posts
+    @contributor = params[:contributor].downcase
+    @contributor_posts = WikiPost.where("LOWER(author) = ?", @contributor)
   
-  
-  
+    respond_to do |format|
+      format.html # This will render contributor_posts.html.erb
+      format.json { render json: @contributor_posts } # Adjust as needed
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
