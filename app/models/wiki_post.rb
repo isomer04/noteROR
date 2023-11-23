@@ -1,5 +1,7 @@
 class WikiPost < ApplicationRecord
     has_one_attached :image
+    acts_as_paranoid
+
 
     scope :contributors, -> { pluck(:author).uniq}
 

@@ -29,6 +29,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   get 'welcome/about'
   get '/about', to: redirect('/welcome/about')
+  get 'wiki_posts/:id/restore', to: 'wiki_posts#restore', as: :restore_wiki_post_get
+
   root "welcome#index"
 
 end

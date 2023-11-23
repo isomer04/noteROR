@@ -68,17 +68,24 @@ class WikiPostsController < ApplicationController
 
   def deleted
     puts 'Debug: Deleted action is called!'
-
-    @deleted_wiki_posts = WikiPost.unscoped.where.not(deleted_at: nil)
-    puts "Debug: Found #{@deleted_wiki_posts.count} deleted posts."
-
+    @deleted_wiki_posts = WikiPost.only_deleted.where.not(deleted_at: nil)
+    puts "Debug: Found #{@deleted_wiki_posts&.count || 0} deleted posts."
   end
+  
 
   def restore
-    @wiki_post = WikiPost.find(params[:id])
-    @wiki_post.restore
-    redirect_to deleted_wiki_posts_path, notice: 'Post restored successfully.'
+    wiki_post = WikiPost.only_deleted.find_by(id: params[:id])
+    
+    if wiki_post
+      wiki_post.restore
+      redirect_to wiki_posts_path, notice: 'Wiki post was successfully restored.'
+    else
+      redirect_to deleted_wiki_posts_path, alert: 'Invalid operation on deleted posts.'
+    end
   end
+  
+  
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -86,9 +93,10 @@ class WikiPostsController < ApplicationController
       if params[:id] == 'deleted'
         redirect_to deleted_wiki_posts_path, alert: 'Invalid operation on deleted posts.'
       else
-        @wiki_post = WikiPost.find(params[:id])
+        @wiki_post = WikiPost.unscoped.find(params[:id])
       end
     end
+    
 
     # Only allow a list of trusted parameters through.
     def wiki_post_params

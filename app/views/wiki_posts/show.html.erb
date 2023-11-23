@@ -23,4 +23,7 @@
   <%= button_to "Move to Trash", soft_delete_wiki_post_path(@wiki_post), method: :patch, form: { data: { turbo_confirm: "Are you sure you want to move #{@wiki_post.title} to the trash?" } } %>
 
 
+  <%= button_to 'Move to Trash', soft_delete_wiki_post_path(@wiki_post), method: :patch, form: { data: { turbo_confirm: "Are you sure you want to move this post to the trash?" } } %>
+
+
 </div>
