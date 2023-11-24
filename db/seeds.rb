@@ -14,4 +14,8 @@ WikiPost.create!(title: 'My second post', description: 'Description for the seco
 WikiPost.create!(title: 'My third post', description: 'Description for the third post', author: 'Author C')
 WikiPost.create!(title: 'My fourth post', description: 'Description for the fourth post', author: 'Author D')
 
+# 50.times do
+#     WikiPost.create(title: SecureRandom.hex(5), description: 'Test post!',
+#     author: 'Johnny Fakes')
 
+# end

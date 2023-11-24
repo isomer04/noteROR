@@ -3,6 +3,9 @@ class Api::V1::WikiPostsController < ApplicationController
     skip_before_action :verify_authenticity_token
 
     def index
+        page = params[:page].to_i
+        limit = params[:limit].to_i
+        offset = (page - 1) * limit
         @wiki_posts = WikiPost.all
         render json: @wiki_posts
     end
