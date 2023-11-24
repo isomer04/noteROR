@@ -7,12 +7,12 @@ class Api::V1::WikiPostsController < ApplicationController
         render json: @wiki_posts
     end
 
-    def show
-        #render a specific wikiPost, found by ID as json
+    def show 
+        #render a specific wikipost, found by ID as json 
         @wiki_post = WikiPost.find(params[:id])
-        render json: @wiki_post
-
-    end
+        serialized = WikiPostSerializer.serialize(@wiki_post)
+        render json: serialized
+    end 
 
     def create
         #create a wikipost from params in the request body. Render error if failure.
