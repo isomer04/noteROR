@@ -4,6 +4,7 @@ class WikiPost < ApplicationRecord
 
 
     scope :contributors, -> { pluck(:author).uniq}
+    scope :sort_by_created, -> {order(created_at: :desc)}
 
     # Soft delete method
     def soft_delete
