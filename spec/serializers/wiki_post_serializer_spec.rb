@@ -5,7 +5,7 @@ RSpec.describe WikiPostSerializer do
         let!(:description) {'test'}
         let!(:author) {'test'}
         it 'correctly serializes the Wikipost object' do 
-            wikipost = WikiPost.create(title: title, description: description, author: author)
+            wikipost = WikiPostHelper.create_wiki_post(title: title, description: description, author: author)
             expected_result = {:id=>wikipost.id, 
                             :created_at=>wikipost.created_at.strftime("%a %d %b %Y"), 
                             :updated_at=>wikipost.updated_at.strftime("%a %d %b %Y"), 
