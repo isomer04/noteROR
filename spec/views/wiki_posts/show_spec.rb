@@ -11,9 +11,9 @@ RSpec.describe 'Wiki Post Show', type: :feature do
         # visit the show page of the record
         visit wiki_post_path(wiki_post)
         # verify the record's attributes are displayed
-        expect(page).to have_link('Edit this wiki post')
+        expect(page).to have_link('Edit this note')
         # click the delete button
-        click_button('Delete')
+        click_button('Permanently delete it')
         expect(WikiPost.count).to eq(0)
         # verify we are redirected after deletion
         expect(current_path).to eq(wiki_posts_path)
@@ -22,13 +22,15 @@ RSpec.describe 'Wiki Post Show', type: :feature do
     context 'edit' do
       it 'edits a wikipost from the show page' do
         wiki_post = FactoryBot.create(:wiki_post)
-        title = 'New Title'
+        title = 'Paul Bunyans Flowers'
 
         visit wiki_post_path(wiki_post)
-        click_link('Edit this wiki post')
 
+        click_link('Edit this note', wait: 10)  
+        save_and_open_page
+        
         fill_in 'Title', with: title
-        click_button 'Edit'
+        click_button ("Update") 
 
         expect(current_path).to eq(wiki_post_path(wiki_post))
       end

@@ -16,7 +16,7 @@
 
   <%= button_to "Move to Trash", soft_delete_wiki_post_path(@wiki_post), method: :patch, form: { data: { turbo_confirm: "Are you sure you want to move #{@wiki_post.title} to the trash?" } } %>
 
-  <%= link_to "Edit this note", edit_wiki_post_path(@wiki_post) %> |
+  <%= link_to 'Edit this note', edit_wiki_post_path(@wiki_post) %> |
   <%= link_to "Back to notes", wiki_posts_path %>
 </div>
 

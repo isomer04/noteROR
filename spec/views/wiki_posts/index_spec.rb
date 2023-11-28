@@ -32,6 +32,6 @@ RSpec.feature 'Wiki Posts', type: :feature do
     end
 
     # Check for the presence of the "New wiki post" link
-    expect(page).to have_link('New wiki post')
+    expect(page).to have_link('New note')
   end
 end

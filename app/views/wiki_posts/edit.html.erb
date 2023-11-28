@@ -1,5 +1,4 @@
-<!-- app/views/wiki_posts/edit.html.erb -->
-<h1>Edit wiki post</h1>
+<h1>Edit note</h1>
 
 <%= form_with model: @wiki_post, local: true do |form| %>
   <div>
@@ -33,4 +32,4 @@
   <%= link_to "Back to notes", wiki_posts_path %>
 </div>
 
-<%= button_to "Destroy this note", @wiki_post, method: :delete, form: { data: { turbo_confirm: "Are you sure you want to delete this wiki post?" } } %>
+<%= button_to 'Destroy this note', @wiki_post, method: :delete, form: { data: { turbo_confirm: "Are you sure you want to delete this wiki post?" } } %>

@@ -22,9 +22,9 @@ class WikiPostsTest < ApplicationSystemTestCase
 
   test "should update Wiki post" do
     visit wiki_post_url(@wiki_post)
-    click_on "Edit this wiki post", match: :first
+    click_on 'Edit this note', match: :first
 
-    click_on "Update Wiki post"
+    click_on "Update note"
 
     assert_text "Wiki post was successfully updated"
     click_on "Back"
