@@ -1,0 +1,34 @@
+<style>
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f0f0f0; /* Add your desired background color */
+    padding: 10px; /* Add padding for spacing */
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+
+  li {
+    margin-right: 10px; /* Adjust spacing between list items */
+  }
+
+  h1 {
+    margin: 0; /* Remove default margin for h1 */
+  }
+</style>
+
+<nav>
+  <p style="color: green;"><%= notice %></p>
+  <h1>NoteROR</h1>
+  <ul>
+    <li><%= link_to "New note", new_wiki_post_path %></li>
+    <li><%= link_to "View Notes", wiki_posts_path %></li>
+    <li><%= link_to "View Deleted Posts", deleted_wiki_posts_path %></li>
+  </ul>
+</nav>
