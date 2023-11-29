@@ -17,8 +17,8 @@ NoteROR is a web application developed using the Ruby on Rails framework. It all
 
 Make sure you have the following installed on your machine:
 
-- Ruby (version X.X.X)
-- Ruby on Rails (version X.X.X)
+- Ruby (version 3.2.2)
+- Ruby on Rails (version 7.1.2)
 
 ## Installation
 
