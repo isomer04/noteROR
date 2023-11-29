@@ -58,15 +58,16 @@ Make sure you have the following installed on your machine:
 
       NoteROR implements soft delete functionality to handle the deletion of notes. When a user deletes a note, it is not immediately removed from the database. Instead, the note is marked as "soft       deleted" by setting the deleted_at timestamp. Soft-deleted notes are excluded from regular queries but can be recovered or permanently deleted.
 
-        ## Running Tests
+   ## Running Tests
      To run the test suite:
 
       ```bash
+      bundle exec rspec
       bundle exec rspec spec/views/wiki_posts/item_spec.rb
    ```
+![Screenshot_623](https://github.com/isomer04/noteROR/assets/43922158/cf0cb107-e284-40ff-aa2b-06863221f0f5)
 
-      ## Contributing
-  If you'd like to contribute to this project, please follow our contribution guidelines.
+
 
 ## License
 This project is licensed under the MIT License.
