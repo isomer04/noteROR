@@ -1,4 +1,5 @@
 class WikiPost < ApplicationRecord
+    belongs_to :user
     has_one_attached :image
     acts_as_paranoid
 

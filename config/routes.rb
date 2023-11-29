@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :wiki_posts do
     collection do
       get 'deleted', to: 'wiki_posts#deleted', as: 'deleted'
@@ -13,7 +14,7 @@ Rails.application.routes.draw do
     get 'example'
 
   end
-  namespace :wekcome do
+  namespace :welcome do
     get 'index'
     get 'about'
 

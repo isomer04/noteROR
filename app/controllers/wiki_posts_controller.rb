@@ -1,4 +1,5 @@
 class WikiPostsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_wiki_post, only: %i[show edit update destroy soft_delete restore]
 
   # GET /wiki_posts or /wiki_posts.json

@@ -1,9 +1,19 @@
 <h1>Welcome#index</h1>
-<h1>My Note</h1>
 
-<p>Find me in app/views/welcome/index.html.erb</p>
+<% if user_signed_in? %>
+  <h1>My Note</h1>
 
-<h2><%= link_to "View Posts", wiki_posts_path%></h2>
+  <% if @my_notes.present? %>
+    <ul>
+      <% @my_notes.each do |note| %>
+        <li><%= note.title %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No notes found.</p>
+  <% end %>
+<% end %>
+
+<h2><%= link_to "View Posts", wiki_posts_path %></h2>
 <h2><%= link_to "View Deleted Posts", deleted_wiki_posts_path %></h2>
-
-<h2><%= link_to "About", welcome_about_path%></h2>
+<h2><%= link_to "About", welcome_about_path %></h2>
