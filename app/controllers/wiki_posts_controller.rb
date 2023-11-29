@@ -52,13 +52,20 @@ class WikiPostsController < ApplicationController
 
   # DELETE /wiki_posts/1 or /wiki_posts/1.json
   def destroy
-    @wiki_post.destroy!
+    if params[:permanent_delete]
+      @wiki_post.really_destroy!
+      notice_message = 'Wiki post was permanently deleted.'
+    else
+      @wiki_post.destroy!
+      notice_message = 'Wiki post was moved to the trash.'
+    end
 
     respond_to do |format|
-      format.html { redirect_to wiki_posts_url, notice: "Wiki post was successfully destroyed." }
+      format.html { redirect_to wiki_posts_url, notice: notice_message }
       format.json { head :no_content }
     end
   end
+  
 
    # Soft delete action
    def soft_delete
