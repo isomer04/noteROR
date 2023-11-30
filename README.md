@@ -1,12 +1,13 @@
-# Rails Application README
-
-## Project Name
+## NoteROR
 
 **NoteROR** - A Rails application with soft delete functionality.
 
 ## Description
 
 NoteROR is a web application developed using the Ruby on Rails framework. It allows users to create, view, edit, and delete notes. The application also includes soft delete functionality to handle the temporary removal of notes, allowing users to recover or permanently delete them.
+
+
+![noteror](https://github.com/isomer04/noteROR/assets/43922158/afe2b202-20d7-4b0f-8e5c-d57fadcc65ab)
 
 ## Features
 
